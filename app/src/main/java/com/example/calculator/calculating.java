@@ -43,7 +43,6 @@ public class calculating extends AppCompatActivity {
         random_example ();
     }
 
-
     public int getOneRand (int r, int z){          //рандом числа нужного деапозона
         int rz, ten = 1;
 
@@ -147,78 +146,6 @@ public class calculating extends AppCompatActivity {
         }
 
 
-
-
-/*        if (numsign >= 1){
-            num = lstnum.get( random.nextInt(lstnum.size()) );
-
-             extmas = get2Sign(Character.getNumericValue(num.charAt(0)), Character.getNumericValue(num.charAt(1)), Character.getNumericValue(num.charAt(2))  );
-
-            example = Integer.parseInt(extmas[0]);
-            if (numsign == 1) {
-                exampletxt.append(extmas[1]);
-            }else {
-                exampletxt.append("( ").append(extmas[1]).append(" )");
-            }
-        }
-        if (numsign == 2) {
-            num = arrnohard.get( random.nextInt(arrnohard.size()));
-
-            if (Character.getNumericValue(num.charAt(0)) == 2) {
-                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)),1);
-                example -= randnum;
-                exampletxt.append(" - ").append(randnum);
-            } else if (Character.getNumericValue(num.charAt(0)) == 3) {
-                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)),1);
-                example *= randnum;
-                exampletxt.append(" * ").append(randnum);
-            } else {
-                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)),1);
-                example += randnum;
-                exampletxt.append(" + ").append(randnum);
-            }
-        }
-        if (numsign >= 3) {
-            num = lstnum.get(random.nextInt(lstnum.size()));
-
-            extmas = get2Sign(Character.getNumericValue(num.charAt(0)), Character.getNumericValue(num.charAt(1)), Character.getNumericValue(num.charAt(2)));
-
-            int ex1 = Integer.parseInt(extmas[0]);
-
-            num = arrnohard.get(random.nextInt(arrnohard.size()));
-
-            if (Character.getNumericValue(num.charAt(0)) == 2) {
-                example -= ex1;
-                exampletxt.append(" - ");
-            } else if (Character.getNumericValue(num.charAt(0)) == 3) {
-                example *= ex1;
-                exampletxt.append(" * ");
-            } else {
-                example += ex1;
-                exampletxt.append(" + ");
-            }
-
-            exampletxt.append("( ").append(extmas[1]).append(" )");
-
-        }
-        if (numsign == 4){
-            num = arrnohard.get(random.nextInt(arrnohard.size()));
-
-            if (Character.getNumericValue(num.charAt(0)) == 2) {
-                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)),1);
-                example -= randnum;
-                exampletxt.append(" - ").append(randnum);
-            } else if (Character.getNumericValue(num.charAt(0)) == 3) {
-                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)),1);
-                example *= randnum;
-                exampletxt.append(" * ").append(randnum);
-            } else {
-                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)),1);
-                example += randnum;
-                exampletxt.append(" + ").append(randnum);
-            }
-        }*/
-
         exampletxt.append(" = ");
         TextView textView = findViewById(R.id.textView5);
         textView.setText(exampletxt);
@@ -242,7 +169,7 @@ public class calculating extends AppCompatActivity {
                 random_example();
             }
         }else if (id == R.id.exwut){
-            textView.setText(exampletxts + extxt);
+            textView.setText(String.valueOf(exampletxts + extxt));
             end = true;
         }/*else if (id == R.id.exit){
             Intent intent = new Intent(this, MainActivity.class);
@@ -301,7 +228,7 @@ public class calculating extends AppCompatActivity {
                 //extxtbut.deleteCharAt(0);
 
             }
-            textView.setText(exampletxts + extxtbut);
+            textView.setText(String.valueOf(exampletxts + extxtbut));
         }
     }
     //Log.d("som",Integer.toString(extxtbut.length()));
