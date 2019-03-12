@@ -56,9 +56,10 @@ public class calculating extends AppCompatActivity {
         rz = (int)Math.floor(ten + Math.random() * (9 * ten));
         return rz;
     }
+
+
     StringBuilder oneSignText = new StringBuilder ();
     int oneSignInt;
-
     public void get2Sign (int z,int nam1,int nam2) {        //создание одного примера
         oneSignInt = 0;
         oneSignText.setLength(0);

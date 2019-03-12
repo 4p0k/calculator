@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".calculating"></activity>
+        <activity android:name=".TabSettingsActivity"></activity>
+        <activity android:name=".calculating" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
