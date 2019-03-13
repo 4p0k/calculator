@@ -54,12 +54,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startAdvancedSettings (View v) {
-        //int i = 1;
-        //Log.d("som",Integer.toString(i % 2));
+        int i = 1;
+        Log.d("som",Integer.toString(i % 2));
 
 
-        Intent intent = new Intent(this, TabSettingsActivity.class);
-        startActivity(intent);
+        /*Intent intent = new Intent(this, advancedsettings.class);
+        startActivity(intent);*/
     }
 
 
