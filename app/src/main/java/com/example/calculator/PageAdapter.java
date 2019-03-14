@@ -26,6 +26,12 @@ public class PageAdapter extends FragmentStatePagerAdapter {
             case 3 :
                 TabMulSet tabMulSet = new TabMulSet();
                 return  tabMulSet;
+            case 4 :
+                TabDivSet tabDivSet = new TabDivSet();
+                return tabDivSet;
+            case 5 :
+                TabSettings tabSettings = new TabSettings();
+                return  tabSettings;
             default:
                 return null;
         }

@@ -19,9 +19,11 @@ public class TabSettingsActivity extends AppCompatActivity {
 
         TabLayout tablayout = findViewById(R.id.tabLayout);
         tablayout.addTab(tablayout.newTab().setText("Fast"));
-        tablayout.addTab(tablayout.newTab().setText("Add"));
-        tablayout.addTab(tablayout.newTab().setText("Sub"));
-        tablayout.addTab(tablayout.newTab().setText("Mul"));
+        tablayout.addTab(tablayout.newTab().setText("+"));
+        tablayout.addTab(tablayout.newTab().setText("-"));
+        tablayout.addTab(tablayout.newTab().setText("*"));
+        tablayout.addTab(tablayout.newTab().setText("/"));
+        tablayout.addTab(tablayout.newTab().setText("Settings"));
         tablayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = findViewById(R.id.pager);
