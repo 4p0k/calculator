@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class PageAdapter extends FragmentStatePagerAdapter {
     int counttab;
-    public PageAdapter(FragmentManager fm, int counttab) {
+    PageAdapter(FragmentManager fm, int counttab) {
         super(fm);
         this.counttab = counttab;
     }
@@ -15,14 +15,17 @@ public class PageAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int i) {
         switch(i){
             case 0 :
-                TabFastSet tabfastset = new TabFastSet();
-                return  tabfastset;
+                TabFastSet tabFastSet = new TabFastSet();
+                return  tabFastSet;
             case 1 :
-                TabAddSet tabaddset = new TabAddSet();
-                return  tabaddset;
+                TabAddSet tabAddSet = new TabAddSet();
+                return  tabAddSet;
             case 2 :
-                TabSubSet tabsubset = new TabSubSet();
-                return  tabsubset;
+                TabSubSet tabSubSet = new TabSubSet();
+                return  tabSubSet;
+            case 3 :
+                TabMulSet tabMulSet = new TabMulSet();
+                return  tabMulSet;
             default:
                 return null;
         }

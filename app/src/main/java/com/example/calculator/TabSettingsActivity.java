@@ -18,9 +18,10 @@ public class TabSettingsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         TabLayout tablayout = findViewById(R.id.tabLayout);
-        tablayout.addTab(tablayout.newTab().setText("tab1"));
-        tablayout.addTab(tablayout.newTab().setText("tab2"));
-        tablayout.addTab(tablayout.newTab().setText("tab3"));
+        tablayout.addTab(tablayout.newTab().setText("Fast"));
+        tablayout.addTab(tablayout.newTab().setText("Add"));
+        tablayout.addTab(tablayout.newTab().setText("Sub"));
+        tablayout.addTab(tablayout.newTab().setText("Mul"));
         tablayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = findViewById(R.id.pager);
