@@ -8,7 +8,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class calculating extends AppCompatActivity {
+public class CalculatingActivity extends AppCompatActivity {
 
 
 

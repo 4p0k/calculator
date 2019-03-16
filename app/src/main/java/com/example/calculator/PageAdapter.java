@@ -4,6 +4,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.calculator.MainTabs.FragmentAddition;
+import com.example.calculator.MainTabs.FragmentDivision;
+import com.example.calculator.MainTabs.FragmentFast;
+import com.example.calculator.MainTabs.FragmentMultiplication;
+import com.example.calculator.MainTabs.FragmentSettings;
+import com.example.calculator.MainTabs.FragmentSubtraction;
+
+
 public class PageAdapter extends FragmentStatePagerAdapter {
     int counttab;
     PageAdapter(FragmentManager fm, int counttab) {
@@ -15,23 +23,23 @@ public class PageAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int i) {
         switch(i){
             case 0 :
-                TabFastSet tabFastSet = new TabFastSet();
-                return  tabFastSet;
+                FragmentFast fragmentFast = new FragmentFast();
+                return fragmentFast;
             case 1 :
-                TabAddSet tabAddSet = new TabAddSet();
-                return  tabAddSet;
+                FragmentAddition fragmentAddition = new FragmentAddition();
+                return fragmentAddition;
             case 2 :
-                TabSubSet tabSubSet = new TabSubSet();
-                return  tabSubSet;
+                FragmentSubtraction fragmentSubtraction = new FragmentSubtraction();
+                return fragmentSubtraction;
             case 3 :
-                TabMulSet tabMulSet = new TabMulSet();
-                return  tabMulSet;
+                FragmentMultiplication fragmentMultiplication = new FragmentMultiplication();
+                return fragmentMultiplication;
             case 4 :
-                TabDivSet tabDivSet = new TabDivSet();
-                return tabDivSet;
+                FragmentDivision fragmentDivision = new FragmentDivision();
+                return fragmentDivision;
             case 5 :
-                TabSettings tabSettings = new TabSettings();
-                return  tabSettings;
+                FragmentSettings fragmentSettings = new FragmentSettings();
+                return fragmentSettings;
             default:
                 return null;
         }

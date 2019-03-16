@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (arrnum.size() != 0 && arrsig.size() != 0) {
-            Intent intent = new Intent(this, calculating.class);
+            Intent intent = new Intent(this, CalculatingActivity.class);
             intent.putStringArrayListExtra("listnum", arrnum);
             intent.putIntegerArrayListExtra("listsig", arrsig);
 
