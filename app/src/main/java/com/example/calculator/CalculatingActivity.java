@@ -2,6 +2,7 @@ package com.example.calculator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -40,45 +41,38 @@ public class CalculatingActivity extends AppCompatActivity {
         random_example ();
     }
 
-    public int getOneRand (int r, int z){          //рандом числа нужного деапозона
-        int rz, ten = 1;
+    public int getOneRand (int number){          //рандомное числа нужного деапозона
+        int ten = 1;
 
-        if (z == 4){
-            ten = 2;
-            for (int i =1; i < r; i++){
-                ten = ten * 10 + 2;
-            }
-        }else {
-            for (int i = 1; i < r; i++) {
-                ten *= 10;
-            }
+        for (int i = 1; i < number; i++){
+            ten *= 10;
         }
-        rz = (int)Math.floor(ten + Math.random() * (9 * ten));
-        return rz;
+
+        return (int)Math.floor((ten + 1) + Math.random() * ((9 * ten) - 1));
     }
 
 
     StringBuilder oneSignText = new StringBuilder ();
     int oneSignInt;
-    public void get2Sign (int z,int nam1,int nam2) {        //создание одного примера
+    public void get2Sign (int sign,int nam1,int nam2) {        //создание одного примера
         oneSignInt = 0;
         oneSignText.setLength(0);
 
-        int n1 = getOneRand(nam1, z);
-        int n2 = getOneRand(nam2, z);
-        if (z == 1) {
+        int n1 = getOneRand(nam1);
+        int n2 = getOneRand(nam2);
+        if (sign == 1) {
             oneSignInt = n1 + n2;
             oneSignText.append(n1).append(" + ").append(n2);
-        } else if (z == 2) {
+        } else if (sign == 2) {
             oneSignInt = n1 - n2;
             oneSignText.append(n1).append(" - ").append(n2);
-        } else if (z == 3) {
+        } else if (sign == 3) {
             oneSignInt = n1 * n2;
             oneSignText.append(n1).append(" * ").append(n2);
         }else {
             int n3 = n1 * n2;
-            oneSignInt = n1;
-            oneSignText.append(n3).append(" / ").append(n2);
+            oneSignInt = n2;
+            oneSignText.append(n3).append(" : ").append(n1);
         }
     }
 
@@ -128,15 +122,15 @@ public class CalculatingActivity extends AppCompatActivity {
             num = arrLisNoHard.get(random.nextInt(arrLisNoHard.size()));
 
             if (Character.getNumericValue(num.charAt(0)) == 2) {
-                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)),1);
+                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)));
                 example -= randnum;
                 exampletxt.append(" - ").append(randnum);
             } else if (Character.getNumericValue(num.charAt(0)) == 3) {
-                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)),1);
+                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)));
                 example *= randnum;
                 exampletxt.append(" * ").append(randnum);
             } else {
-                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)),1);
+                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)));
                 example += randnum;
                 exampletxt.append(" + ").append(randnum);
             }
@@ -158,7 +152,10 @@ public class CalculatingActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textView5);
         int id = v.getId();
         if(id == R.id.next) {
-            random_example();
+            for (int i = 1; i < 100; i++) {
+                random_example();
+                Log.d("som", exampletxts + extxt);
+            }
             //Expression expression = new Expression(3);
             //textView.setText(expression + " = " + expression.getAnswer());
         }else if (id == R.id.oknext){

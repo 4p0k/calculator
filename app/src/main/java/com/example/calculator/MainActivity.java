@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     String[] idCheckCod = new String[]{ "111","122","133","144",  //findViewById(getResources().getIdentifier("a" + idCheckCod, "id", getPackageName()))
                                         "211","222","233","244",
                                         "311","322","333","344",
-                                        "411","421","412","431",
+                                        "411","412","413","422", // [ex] = [1] * [2] -> [ex] : [1] = [2]
                                         "1","2","3","4"};
     CheckBox[] checkBoxObj = new CheckBox[idCheckCod.length];
 
