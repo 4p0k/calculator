@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 
 import com.example.calculator.MainTabs.FragmentAddition;
 import com.example.calculator.MainTabs.FragmentDivision;
@@ -90,11 +91,18 @@ public class TabSettingsActivity extends AppCompatActivity {
 
 
 
-    public void startAdvancedSettings (View v) {
+    public void startSettings (View v) {
+        CheckBox sss = findViewById(R.id.a111);
 
-        Log.d("som",Integer.toString(100));
+
+        if (sss.isChecked()){
+            Log.d("som","check");
+        }else {
+            Log.d("som","NOT check");
+        }
 
 
+        //Log.d("som",Integer.toString(100));
         //Intent intent = new Intent(this, TabSettingsActivity.class);
         //startActivity(intent);
     }
