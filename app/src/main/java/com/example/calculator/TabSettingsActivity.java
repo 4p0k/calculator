@@ -24,6 +24,7 @@ public class TabSettingsActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,18 +90,25 @@ public class TabSettingsActivity extends AppCompatActivity {
         });*/
 
 
-
-
+    String[] idCheckCod = { "111","122","133","144",
+            "211","222","233","244",
+            "311","322","333","344",
+            "411","412","413","422", };
+    String ida = "a";
+    String fullidcheck;
     public void startSettings (View v) {
-        CheckBox sss = findViewById(R.id.a111);
+
+        for (int i = 0; i <= idCheckCod.length; i++) {
+            fullidcheck = ida + idCheckCod[i];
+            CheckBox sss = findViewById(getResources().getIdentifier(fullidcheck, "id", getPackageName()));
 
 
-        if (sss.isChecked()){
-            Log.d("som","check");
-        }else {
-            Log.d("som","NOT check");
+            if (sss.isChecked()) {
+                Log.d("som", "check");
+            } else {
+                Log.d("som", "NOT check");
+            }
         }
-
 
         //Log.d("som",Integer.toString(100));
         //Intent intent = new Intent(this, TabSettingsActivity.class);
