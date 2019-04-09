@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         int[] idCheckBox = {R.id.a111,R.id.a122,R.id.a133,R.id.a144,
                             R.id.a211,R.id.a222,R.id.a233,R.id.a244,
                             R.id.a311,R.id.a322,R.id.a333,R.id.a344,
-                            R.id.a411,R.id.a421,R.id.a412,R.id.a431,
+                            R.id.a411,R.id.a412,R.id.a413,R.id.a422,
                             R.id.a1,R.id.a2,R.id.a3,R.id.a4};
 
         for(int i = 0;i < idCheckBox.length;i++){

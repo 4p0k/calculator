@@ -31,9 +31,9 @@ public class CalculatingActivity extends AppCompatActivity {
         arrLisNumberOfSign = getIntent().getIntegerArrayListExtra("listsig");
         //nohard = getIntent().getExtras().getBoolean("mult");
 
-        for (int i = 0; 2 >= Character.getNumericValue(arrLisSelectTypeSign.get( i ).charAt(0)); i++) {
+/*        for (int i = 0; 2 >= Character.getNumericValue(arrLisSelectTypeSign.get( i ).charAt(0)); i++) {
             arrLisNoHard.add(arrLisSelectTypeSign.get(i));
-        }
+        }*/
         if (arrLisNoHard.size() == 0) {
             arrLisNoHard.add("122");
             arrLisNoHard.add("222");

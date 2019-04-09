@@ -20,56 +20,19 @@ import com.example.calculator.MainTabs.FragmentSettings;
 import com.example.calculator.MainTabs.FragmentSubtraction;
 
 public class TabSettingsActivity extends AppCompatActivity {
-    private Toolbar toolbar;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_settings);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
-
-        viewPager = (ViewPager) findViewById(R.id.pager);
-        setupViewPager(viewPager);
-
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        tabLayout.setupWithViewPager(viewPager);
-
-
-    }
-
-    private void setupViewPager(ViewPager viewPager) {
-        PageAdapter adapter = new PageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new FragmentFast(), "Fast");
-        adapter.addFragment(new FragmentAddition(), "+");
-        adapter.addFragment(new FragmentSubtraction(), "-");
-        adapter.addFragment(new FragmentMultiplication(), "*");
-        adapter.addFragment(new FragmentDivision(), ":");
-        adapter.addFragment(new FragmentSettings(), "Settings");
-        viewPager.setAdapter(adapter);
-    }
-
-
-/*        TabLayout tablayout = findViewById(R.id.tabLayout);
+        TabLayout tablayout = findViewById(R.id.tabLayout);
         tablayout.addTab(tablayout.newTab().setText("Fast"));
-        tablayout.addTab(tablayout.newTab().setText("+"));
-        tablayout.addTab(tablayout.newTab().setText("-"));
-        tablayout.addTab(tablayout.newTab().setText("*"));
-        tablayout.addTab(tablayout.newTab().setText(":"));
         tablayout.addTab(tablayout.newTab().setText("Settings"));
         tablayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = findViewById(R.id.pager);
-        PagerAdapter pagerAdapter = new PageAdapter(getSupportFragmentManager(),tablayout.getTabCount());
+        PagerAdapter pagerAdapter = new PageAdapter(getSupportFragmentManager(), tablayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
         tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -87,9 +50,13 @@ public class TabSettingsActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
-        });*/
+        });
+    }
 
-
+    int[] idCheckBox = {R.id.a111,R.id.a122,R.id.a133,R.id.a144,
+            R.id.a211,R.id.a222,R.id.a233,R.id.a244,
+            R.id.a311,R.id.a322,R.id.a333,R.id.a344,
+            R.id.a411,R.id.a412,R.id.a413,R.id.a422,};
     String[] idCheckCod = { "111","122","133","144",
             "211","222","233","244",
             "311","322","333","344",
@@ -97,16 +64,19 @@ public class TabSettingsActivity extends AppCompatActivity {
     String ida = "a";
     String fullidcheck;
     public void startSettings (View v) {
-
-        for (int i = 0; i <= idCheckCod.length; i++) {
+int sdg;
+        for (int i = 0; i < idCheckCod.length; i++) {
             fullidcheck = ida + idCheckCod[i];
-            CheckBox sss = findViewById(getResources().getIdentifier(fullidcheck, "id", getPackageName()));
+            sdg = getResources().getIdentifier(fullidcheck, "id", getPackageName());
+            Log.d("som",Integer.toString(sdg));
+            CheckBox sss = findViewById( sdg);
+                    //idCheckBox[i]);//getResources().getIdentifier(fullidcheck, "id", getPackageName()));
 
 
             if (sss.isChecked()) {
-                Log.d("som", "check");
+                Log.d("som", "check - " + fullidcheck);
             } else {
-                Log.d("som", "NOT check");
+                Log.d("som", "NOT check" + fullidcheck);
             }
         }
 
