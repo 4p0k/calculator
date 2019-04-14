@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 
@@ -52,12 +53,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void startAdvancedSettings (View v) {
+    public void startExtendInfoActivity (View view) {
         //int i = 1;
         //Log.d("som",Integer.toString(i % 2));
 
 
-        Intent intent = new Intent(this, TabSettingsActivity.class);
+        Intent intent = new Intent(this, ExtendInfoActivity.class);
+        intent.putExtra("type",Integer.parseInt((String) view.getTag()));
         startActivity(intent);
     }
 
