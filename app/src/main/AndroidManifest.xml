@@ -13,15 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".ExtendInfoActivity"
-            android:label="@string/title_activity_extend_info"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".TabSettingsActivity" />
+        <activity android:name=".ExtendInfoActivity"/>
+        <!--<activity android:name=".TabSettingsActivity" />-->
         <activity android:name=".CalculatingActivity" />
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:name=".TabSettingsActivity">     <!--android:name=".MainActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

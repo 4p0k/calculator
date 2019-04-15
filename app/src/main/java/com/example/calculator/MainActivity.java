@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
                             "311","322","333","344",
                             "411","412","413","422", // [ex] = [1] * [2] -> [ex] : [1] = [2]
                             "1","2","3","4"};
+    String[] nameSign ={"add","sub","mul","div","num"};
     CheckBox[] checkBoxObj = new CheckBox[idCheckCod.length];
 
     @Override
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                             R.id.a1,R.id.a2,R.id.a3,R.id.a4};
 
         for(int i = 0;i < idCheckBox.length;i++){
+
             checkBoxObj[i] = findViewById(idCheckBox[i]);
         }
 
