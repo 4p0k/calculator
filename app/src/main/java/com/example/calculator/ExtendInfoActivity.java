@@ -89,24 +89,46 @@ public class ExtendInfoActivity extends AppCompatActivity {
                 break;
         }
 
-        Boolean arraySetCheckBox[] = srs.loadSetCheckBoxArray( sign,arrayCheckBox.length, this );
+    }
 
-        for (int i = 0 ; i < arrayCheckBox.length; i++){
-            if (arraySetCheckBox[i]){
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Boolean arraySetCheckBox[] = srs.loadSetCheckBoxArray(sign, arrayCheckBox.length, this);
+
+        for (int i = 0; i < arrayCheckBox.length; i++) {
+            if (arraySetCheckBox[i]) {
                 arrayCheckBox[i].setChecked(true);
             }
         }
     }
 
+    boolean saveDone = false;
+    public void saveSetCheckBox() {
+        if (!saveDone) {
+            Boolean[] arraySetCheckBox = new Boolean[arrayCheckBox.length];
+
+            for (int i = 0; i < arrayCheckBox.length; i++) {
+                arraySetCheckBox[i] = arrayCheckBox[i].isChecked();
+            }
+            srs.saveSetCheckBoxArray(sign, arraySetCheckBox, this);
+
+            saveDone = true;
+            finish();
+        }
+    }
+
     @Override
     public void onBackPressed() {
+        saveSetCheckBox();
         super.onBackPressed();
-
-        Boolean[] arraySetCheckBox = new Boolean[arrayCheckBox.length];
-
-        for (int i = 0; i < arrayCheckBox.length; i++){
-                arraySetCheckBox[i] = arrayCheckBox[i].isChecked();
-        }
-        srs.saveSetCheckBoxArray(sign, arraySetCheckBox, this);
     }
+
+    @Override
+    protected void onDestroy() {
+        saveSetCheckBox();
+        super.onDestroy();
+    }
+
 }
