@@ -4,15 +4,15 @@ import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 
 import com.example.calculator.CalculatorPackege.SaveReadSettings;
+
+import java.util.ArrayList;
 
 public class TabSettingsActivity extends AppCompatActivity {
 
@@ -22,10 +22,10 @@ public class TabSettingsActivity extends AppCompatActivity {
                             {R.id.a311,R.id.a322,R.id.a333,R.id.a344},
                             {R.id.a411,R.id.a412,R.id.a413,R.id.a422},
                             {R.id.a1,R.id.a2,R.id.a3,R.id.a4}  };
-    String[] idCheckCod = { "111","122","133","144",
-            "211","222","233","244",
-            "311","322","333","344",
-            "411","412","413","422", };
+    String[][] idCheckCod = {   {"111","122","133","144"},
+                                {"211","222","233","244"},
+                                {"311","322","333","344"},
+                                {"411","412","413","422"}   };
     String[] nameSign ={"add","sub","mul","div","num"};
     Boolean arraySetCheckBox[][] = new Boolean[5][4];
     SaveReadSettings srs = new SaveReadSettings();
@@ -115,6 +115,33 @@ public class TabSettingsActivity extends AppCompatActivity {
 
     public void startCalculatingActivity (View view) {
 
+        checkBoxSave();
+
+        ArrayList<String> arrnum = new ArrayList<>();
+        ArrayList<Integer> arrsig = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 4; j++) {
+
+                if (i != 4) {
+                    if (arrayCheckBox[i][j].isChecked()){
+                        arrnum.add(idCheckCod[i][j]);
+                    }
+                }else {
+                    if (arrayCheckBox[i][j].isChecked())
+                        arrsig.add(j);
+                }
+            }
+        }
+
+        if (arrnum.size() != 0 && arrsig.size() != 0) {
+            Intent intent = new Intent(this, CalculatingActivity.class);
+            intent.putStringArrayListExtra("listnum", arrnum);
+            intent.putIntegerArrayListExtra("listsig", arrsig);
+
+            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            startActivity(intent);
+        }
     }
 
 }
