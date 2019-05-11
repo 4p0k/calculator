@@ -6,6 +6,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.calculator.CalculatorPackege.DefaultCalculator;
+import com.example.calculator.CalculatorPackege.ExampleCollector;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -16,146 +19,45 @@ public class CalculatingActivity extends AppCompatActivity {
     ArrayList<String> arrLisSelectTypeSign = new ArrayList<>();       //хеш выбраных знаков
     ArrayList<Integer> arrLisNumberOfSign = new ArrayList<>();     //хеш количество знаков
     //boolean nohard = false;                             //хеш выбора сложности
-    ArrayList<String> arrLisNoHard = new ArrayList<>();    //создание дом листа для промижуточных знаков
+    //ArrayList<String> arrLisNoHard = new ArrayList<>();    //создание дом листа для промижуточных знаков
     String exampletxts ,extxt;                          //пример и правельный ответ
     StringBuilder extxtbut = new StringBuilder ();      //ответ пользователя
     boolean minus = false, end = false;                 //поставил ли пользователь минус и конец даного примера
-    Random random = new Random();
+    TextView textView;
+    ExampleCollector exampleCollector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculating);
 
+        textView = findViewById(R.id.textView5);
+
         arrLisSelectTypeSign = getIntent().getStringArrayListExtra("listnum");
         arrLisNumberOfSign = getIntent().getIntegerArrayListExtra("listsig");
-        //nohard = getIntent().getExtras().getBoolean("mult");
 
-/*        for (int i = 0; 2 >= Character.getNumericValue(arrLisSelectTypeSign.get( i ).charAt(0)); i++) {
-            arrLisNoHard.add(arrLisSelectTypeSign.get(i));
-        }*/
-        if (arrLisNoHard.size() == 0) {
-            arrLisNoHard.add("122");
-            arrLisNoHard.add("222");
-        }
+        exampleCollector = new DefaultCalculator(arrLisSelectTypeSign, arrLisNumberOfSign);
+
         random_example ();
     }
 
-    public int getOneRand (int number){          //рандомное числа нужного деапозона
-        int ten = 1;
-
-        for (int i = 1; i < number; i++){
-            ten *= 10;
-        }
-
-        return (int)Math.floor((ten + 1) + Math.random() * ((9 * ten) - 1));
-    }
-
-
-    StringBuilder oneSignText = new StringBuilder ();
-    int oneSignInt;
-    public void get2Sign (int sign,int nam1,int nam2) {        //создание одного примера
-        oneSignInt = 0;
-        oneSignText.setLength(0);
-
-        int n1 = getOneRand(nam1);
-        int n2 = getOneRand(nam2);
-        if (sign == 1) {
-            oneSignInt = n1 + n2;
-            oneSignText.append(n1).append(" + ").append(n2);
-        } else if (sign == 2) {
-            oneSignInt = n1 - n2;
-            oneSignText.append(n1).append(" - ").append(n2);
-        } else if (sign == 3) {
-            oneSignInt = n1 * n2;
-            oneSignText.append(n1).append(" * ").append(n2);
-        }else {
-            int n3 = n1 * n2;
-            oneSignInt = n2;
-            oneSignText.append(n3).append(" : ").append(n1);
-        }
-    }
 
     public void random_example (){
-        StringBuilder exampletxt = new StringBuilder ();                        //сбор примера
-        int example = 0;                                                        //ответ
-        int numsign = arrLisNumberOfSign.get( random.nextInt(arrLisNumberOfSign.size()) );    //выбор количество знаков
-        String num;                                                             //код для создание одного примара 111 -> 2+3
-        //String[] extmas;
 
-        num = arrLisSelectTypeSign.get( random.nextInt(arrLisSelectTypeSign.size()) );
+        exampletxts = exampleCollector.getExampleBody();
 
-        get2Sign(  Character.getNumericValue(num.charAt(0)),
-                    Character.getNumericValue(num.charAt(1)),
-                    Character.getNumericValue(num.charAt(2)) );
+        textView.setText(exampletxts);
 
-        example = oneSignInt;
-        if (numsign == 1) {
-            exampletxt.append(oneSignText);
-        }else {
-            exampletxt.append("( ").append(oneSignText).append(" )");
-        }
-
-        for (int i = 3; i <= numsign; i += 2) {
-            num = arrLisSelectTypeSign.get(random.nextInt(arrLisSelectTypeSign.size()));
-
-            get2Sign(  Character.getNumericValue(num.charAt(0)),
-                        Character.getNumericValue(num.charAt(1)),
-                        Character.getNumericValue(num.charAt(2)) );
-
-            num = arrLisNoHard.get(random.nextInt(arrLisNoHard.size()));
-
-            if (Character.getNumericValue(num.charAt(0)) == 2) {
-                example -= oneSignInt;
-                exampletxt.append(" - ");
-            } else if (Character.getNumericValue(num.charAt(0)) == 3) {
-                example *= oneSignInt;
-                exampletxt.append(" * ");
-            } else {
-                example += oneSignInt;
-                exampletxt.append(" + ");
-            }
-
-            exampletxt.append("( ").append(oneSignText).append(" )");
-        }
-        if ( 0 == numsign % 2){
-            num = arrLisNoHard.get(random.nextInt(arrLisNoHard.size()));
-
-            if (Character.getNumericValue(num.charAt(0)) == 2) {
-                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)));
-                example -= randnum;
-                exampletxt.append(" - ").append(randnum);
-            } else if (Character.getNumericValue(num.charAt(0)) == 3) {
-                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)));
-                example *= randnum;
-                exampletxt.append(" * ").append(randnum);
-            } else {
-                int randnum = getOneRand(Character.getNumericValue(num.charAt(2)));
-                example += randnum;
-                exampletxt.append(" + ").append(randnum);
-            }
-        }
-
-
-        exampletxt.append(" = ");
-        TextView textView = findViewById(R.id.textView5);
-        textView.setText(exampletxt);
-
-        exampletxts = exampletxt.toString();
-        extxt = Integer.toString(example);
+        extxt = Integer.toString(exampleCollector.getExampleAnswer());
         extxtbut.setLength(0);
         end = false;
         minus = false;
     }
 
     public void sysbtn(View v){
-        TextView textView = findViewById(R.id.textView5);
         int id = v.getId();
         if(id == R.id.next) {
-            for (int i = 1; i < 100; i++) {
                 random_example();
-                Log.d("som", exampletxts + extxt);
-            }
             //Expression expression = new Expression(3);
             //textView.setText(expression + " = " + expression.getAnswer());
         }else if (id == R.id.oknext){
@@ -177,7 +79,6 @@ public class CalculatingActivity extends AppCompatActivity {
 
     public void numbtn(View v){
         if (!end) {
-            TextView textView = findViewById(R.id.textView5);
             int id = v.getId();
             if (id == R.id.btn0) {
                 extxtbut.append(0);

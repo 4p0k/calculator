@@ -128,7 +128,7 @@ public class TabSettingsActivity extends AppCompatActivity {
                     }
                 }else {
                     if (arrayCheckBox[i][j].isChecked())
-                        arrsig.add(j);
+                        arrsig.add(j + 1);
                 }
             }
         }
